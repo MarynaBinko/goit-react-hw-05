@@ -18,10 +18,10 @@ function App() {
      <Routes>
      <Route path="/" element={<HomePage />} />
      <Route path="/moviesPage" element={<MoviesPage />} />
-     <Route path="/moviedetailspage" element={<MovieDetailsPage />} />
-     <Route path="/moviedetailspage/:moviecast" element={<MovieCast />} />
-     <Route path="/moviedetailspage/:moviereviews" element={<MovieReviews />} />
-
+     <Route path="/moviedetailspage:movieId" element={<MovieDetailsPage />}>
+        <Route path="moviecast" element={<MovieCast />} />
+        <Route path="moviereviews" element={<MovieReviews />} />
+    </Route>
      <Route path="*" element={<NotFoundPage />} />
     </Routes>
     
@@ -30,3 +30,4 @@ function App() {
 }
 
 export default App
+

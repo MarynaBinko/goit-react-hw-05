@@ -23,13 +23,13 @@ const MovieCast = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
                 alt={actor.name}
-                width="100"
+                width="250"
               />
             ) : (
               <img
                 src={`https://via.placeholder.com/100?text=No+Image`}
                 alt="No Image"
-                width="100"
+                width="250"
               />
             )}
             <p>{actor.name}</p>

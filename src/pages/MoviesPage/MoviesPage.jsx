@@ -1,50 +1,35 @@
 // import styles from "./MoviesPage.module.css"
-import { Link, Outlet } from "react-router-dom";
-import { useNavigate, useSearchParams } from "react-router-dom"; 
+import { useState } from "react";
+import { searchMovies } from "../../movies-api";
+import MovieList from "../../components/MovieList/MovieList";
+import { useSearchParams } from "react-router-dom";
 
-
-const MoviesPage = ({onSearch}) => {
+const MoviesPage = () => {
+  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const name = searchParams.get("name") || ""; 
-  const navigate = useNavigate();
+  const query = searchParams.get("query") || "";
 
-   
-
-  const handleSubmit = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const movie = form.elements.movie.value;
-    if (movie === "") {
-      return;
+    const query = form.elements.query.value;
+    if (query) {
+      setSearchParams({ query });
+      const results = await searchMovies(query);
+      setMovies(results);
     }
-    onSearch(movie);
-    form.reset();
   };
 
   return (
     <div>
-      <h1>Movies Page</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="movie" 
-          placeholder="Type movie name"
-          value={name}
-          onChange={e => setSearchParams({ name: e.target.value })}
-        />
-        <button type="submit">Movie Search</button>
+      <h1>Search Movies</h1>
+      <form onSubmit={handleSearch}>
+        <input name="query" placeholder="Type movie name" defaultValue={query} />
+        <button type="submit">Search</button>
       </form>
-
-      <ul>
-        <li>
-          <Link to="moviecast">Movie Cast</Link>
-        </li>
-        <li>
-          <Link to="moviereviews">Movie Reviews</Link>
-        </li>
-      </ul>
-      <Outlet />
+      {movies && <MovieList movies={movies} />}
     </div>
   );
-}
+};
 
 export default MoviesPage;

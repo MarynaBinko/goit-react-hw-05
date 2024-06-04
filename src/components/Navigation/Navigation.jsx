@@ -1,16 +1,12 @@
 // import styles from "./Navigation.module.css"
-import { Link } from "react-router-dom";
 
+import { NavLink } from "react-router-dom";
 
-const Navigation = () => {
-  return (
-<nav>
-  <Link to="/">HomePage</Link>
-  <Link to="/moviespage">MoviesPage</Link>
-  <Link to="/moviedetailspage">MovieDetailsPage</Link>
-</nav>
-  )
-}
+const Navigation = () => (
+  <nav>
+    <NavLink to="/" exact>Home</NavLink>
+    <NavLink to="/movies">Movies</NavLink>
+  </nav>
+);
 
-export default Navigation
-
+export default Navigation;

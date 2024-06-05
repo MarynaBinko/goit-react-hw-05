@@ -1,4 +1,4 @@
-// import styles from "./MoviesPage.module.css"
+import styles from "./MoviesPage.module.css"
 import { useState } from "react";
 import { searchMovies } from "../../movies-api";
 import MovieList from "../../components/MovieList/MovieList";
@@ -23,9 +23,9 @@ const MoviesPage = () => {
   return (
     <div>
       <h1>Search Movies</h1>
-      <form onSubmit={handleSearch}>
-        <input name="query" placeholder="Type movie name" defaultValue={query} />
-        <button type="submit">Search</button>
+      <form onSubmit={handleSearch} className={styles.form}>
+        <input name="query" placeholder="Type movie name" defaultValue={query} className={styles.input}/>
+        <button type="submit" className={styles.btn}>Search</button>
       </form>
       {movies && <MovieList movies={movies} />}
     </div>

@@ -26,16 +26,11 @@ ul {
     transition: color 0.3s, background-color 0.3s;
     display: flex;
     justify-content: space-evenly;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  nav:hover {
-    color: white;
-    background-color: #c1dbf7;
-  }
-  
-  .nav:active {
-    font-weight: bold;
-    color: #007bff;
-  }
+
+
 
 

@@ -1,0 +1,36 @@
+.home,
+.movies{
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+ 
+}
+
+
+
+
+.home {
+    background-color: #757576;
+  }
+  
+  .home:hover {
+    background-color: #757576;
+  }
+  
+
+ .movies {
+    background-color: #757576;
+  }
+  
+ .movies:hover {
+    background-color: #757576;
+  }
+  

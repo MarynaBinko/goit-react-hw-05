@@ -1,5 +1,5 @@
 import styles from "./MoviesPage.module.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { searchMovies } from "../../movies-api";
 import MovieList from "../../components/MovieList/MovieList";
 import { useSearchParams } from "react-router-dom";
@@ -9,14 +9,22 @@ const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
 
+  useEffect(() => {
+    const fetchMovies = async () => {
+      if (query) {
+        const results = await searchMovies(query);
+        setMovies(results);
+      }
+    };
+    fetchMovies();
+  }, [query]);
+  
   const handleSearch = async (e) => {
     e.preventDefault();
     const form = e.target;
     const query = form.elements.query.value;
     if (query) {
       setSearchParams({ query });
-      const results = await searchMovies(query);
-      setMovies(results);
     }
   };
 

@@ -1,5 +1,4 @@
 import styles from "./MovieDetailsPage.module.css"
-
 import { useEffect, useState, Suspense, lazy } from "react";
 import { useParams, Link, Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { fetchMovieDetails } from "../../movies-api";
